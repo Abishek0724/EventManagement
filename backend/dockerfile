@@ -1,5 +1,5 @@
-# Start from Maven image to build the app
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+# Start from Maven image with Java 21 to build the app
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 # Set working directory
 WORKDIR /app
@@ -8,12 +8,12 @@ WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Use JDK runtime image to run the app
-FROM eclipse-temurin:17-jdk
+# Use JDK 21 runtime image to run the app
+FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
 
-# Copy the built JAR from previous stage
+# Copy the built JAR from the previous stage
 COPY --from=build /app/target/*.jar app.jar
 
 # Expose port (default Spring Boot port)
