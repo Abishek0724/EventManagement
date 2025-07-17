@@ -7,11 +7,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+# Dependency directories
+node_modules/
 
+# Environment files
 *.local
 
-# Editor directories and files
+# Editor folders
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -21,3 +23,9 @@ node_modules
 *.njsproj
 *.sln
 *.sw?
+
+# Build output - DO NOT ignore for Vercel
+# dist/ ❌ REMOVE if present here
+
+# Important: Do NOT ignore vercel.json
+# vercel.json ❌ REMOVE if present here
